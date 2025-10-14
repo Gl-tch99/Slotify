@@ -35,11 +35,17 @@ services:
       db:
         condition: service_healthy
     command: >
-      sh -c "
+      sh -c '
+        if [ -f /rails/tmp/pids/server.pid ]; then
+          rm /rails/tmp/pids/server.pid
+          echo "Removed old PID file";
+        else
+          echo "No PID file found";
+        fi;
         bundle install &&
         bundle exec rails db:create db:migrate db:seed &&
         bundle exec rails server -b 0.0.0.0
-      "
+      '
 
   frontend:
     build:
