@@ -5,7 +5,7 @@ class Addresses < ActiveRecord::Migration[7.2]
       t.string :street_2
       t.string :city,null:false
       t.string :state,null:false
-      t.number :pincode,null:false
+      t.integer :pincode,null:false
       t.timestamps
     end
   end
