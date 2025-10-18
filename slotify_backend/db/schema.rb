@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_15_191113) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_18_175339) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_15_191113) do
     t.index ["game"], name: "index_sports_on_game", unique: true
   end
 
+  create_table "sports_venues", id: false, force: :cascade do |t|
+    t.bigint "sport_id", null: false
+    t.bigint "venue_id", null: false
+    t.index ["sport_id"], name: "index_sports_venues_on_sport_id"
+    t.index ["venue_id"], name: "index_sports_venues_on_venue_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
@@ -65,12 +72,30 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_15_191113) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "venue_operating_times", force: :cascade do |t|
+    t.bigint "venue_id", null: false
+    t.time "opening_time", null: false
+    t.time "closing_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["venue_id"], name: "index_venue_operating_times_on_venue_id"
+  end
+
   create_table "venues", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id", null: false
+    t.bigint "owner_user_id", null: false
+    t.index ["address_id"], name: "index_venues_on_address_id"
+    t.index ["owner_user_id"], name: "index_venues_on_owner_user_id"
   end
 
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
+  add_foreign_key "sports_venues", "sports"
+  add_foreign_key "sports_venues", "venues"
+  add_foreign_key "venue_operating_times", "venues"
+  add_foreign_key "venues", "addresses"
+  add_foreign_key "venues", "users", column: "owner_user_id"
 end
