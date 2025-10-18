@@ -7,8 +7,7 @@ class Api::V1::VenuesController < ApplicationController
     end
 
     def create
-        @address = Address.create()
-        @venue = Venue.create(venue_params)
+        @venue = Venue.new(venue_params)
         if @venue.save
             render json: @venue, status: :created
         else

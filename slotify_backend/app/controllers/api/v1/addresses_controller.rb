@@ -1,5 +1,5 @@
 class Api::V1::AddressesController < ApplicationController
-    before_actopm :set_user, only:[:update]
+    before_action :set_user, only:[:update]
     def index
         @addresses = Address.all
         render json: @addresses, status: :ok
@@ -19,7 +19,7 @@ class Api::V1::AddressesController < ApplicationController
             if @address.update(address_params)
                 render json: @address, status: :ok
             else
-                render json: { errors: @address.errors.full_message }, status: :unprocessable_entity
+                render json: { errors: @address.errors.full_messages }, status: :unprocessable_entity
             end
         else
             render json: { errors: "Address not found." }, status: :unprocessable_entity
