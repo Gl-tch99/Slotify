@@ -7,9 +7,13 @@ class Api::V1::VenuesController < ApplicationController
     end
 
     def create
+<<<<<<< Updated upstream
         @venue = Venue.new(venue_params)
+=======
+        @venue = Venue.create(venue_params)
+>>>>>>> Stashed changes
         if @venue.save
-            render json: @venue, status: :created
+            render json: @venue.to_json(include: :address, except: :address_id), status: :created
         else
             render json: @venue.errors.full_messages, status: :unprocessable_entity
         end
@@ -30,7 +34,7 @@ class Api::V1::VenuesController < ApplicationController
     private
 
     def venue_params
-        params.require(:venue).permit(:name, :address_id, :owner_user_id)
+        params.require(:venue).permit(:name, :address_id, :owner_user_id, address_attributes: [:street_1, :street_2, :city, :state, :pincode])
     end
 
     def get_venue
