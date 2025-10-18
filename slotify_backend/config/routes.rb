@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     namespace :v1 do 
       resources :users, only: [:show, :index, :create, :update]
       resources :roles, only: [:index]
+      resources :addresses, only: [:index, :create, :update]
+      resources :venues, only: [:index, :create, :update]
     end
   end
 
