@@ -7,12 +7,10 @@ class Api::V1::VenuesController < ApplicationController
     end
 
     def create
-        @venue = Venue.new(venue_params)
-        if @venue.save
-            render json: @venue, status: :created
-        else
-            render json: @venue.errors.full_messages, status: :unprocessable_entity
-        end
+        venue = VenueService.new(venue_params).create_venue
+        render json: venue, status: :created
+        rescue => error
+            render json: {errors: error.message}, status: :unprocessable_entity
     end
 
     def update
