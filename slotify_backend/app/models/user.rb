@@ -5,4 +5,5 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :phone_number, presence: true, uniqueness: true
     has_and_belongs_to_many :roles
+    accepts_nested_attributes_for :roles
 end

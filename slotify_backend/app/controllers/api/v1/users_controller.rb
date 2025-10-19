@@ -10,13 +10,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params.except(:role))
-        @user.roles << Role.find_by(role: user_params.fetch(:role) || "user")
-        if @user.save
-            render json: @user, status: :created
-        else
-            render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
-        end
+        user = UserService.new(user_params).create_user
+        render json: user.to_json(include: { roles: { only: [:role] }}, except: :password_digest ), status: :created
+        rescue ActiveRecord::RecordInvalid => error
+            render json: {errors: error.message}, status: :unprocessable_entity
     end
 
     def edit
