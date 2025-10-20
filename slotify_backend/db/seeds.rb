@@ -187,7 +187,7 @@ sports = [
 ]
 sports.each do |sport_attrs|
   sport = Sport.find_or_create_by(game: sport_attrs[:game])
-  puts "Created sport: #{sport.name}"
+  puts "Created sport: #{sport.game}"
 end
 puts "Sports Created."
 
