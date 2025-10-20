@@ -8,7 +8,7 @@ class Api::V1::VenuesController < ApplicationController
 
     def create
         venue = VenueService.new(venue_params).create_venue
-        render json: venue, status: :created
+        render json: venue.to_json(include: :address, except: :address_id), status: :created
         rescue => error
             render json: {errors: error.message}, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Api::V1::VenuesController < ApplicationController
     private
 
     def venue_params
-        params.require(:venue).permit(:name, :address_id, :owner_user_id)
+        params.require(:venue).permit(:name, :address_id, :owner_user_id, address_attributes: [:street_1, :street_2, :city, :state, :pincode])
     end
 
     def get_venue
