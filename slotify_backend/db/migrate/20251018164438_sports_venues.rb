@@ -5,4 +5,5 @@ class SportsVenues < ActiveRecord::Migration[7.2]
       t.belongs_to :venue, null: false, foreign_key: true
     end
     add_index :sports_venues, [:sport_id, :venue_id], unique: true
+  end
 end
