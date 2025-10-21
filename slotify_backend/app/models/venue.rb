@@ -4,5 +4,7 @@ class Venue < ApplicationRecord
   belongs_to :address
   accepts_nested_attributes_for :address
   belongs_to :user, foreign_key: :owner_user_id
+  
   has_and_belongs_to_many :sports
+  has_many :bookings
 end

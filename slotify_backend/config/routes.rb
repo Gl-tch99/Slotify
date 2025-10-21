@@ -7,15 +7,19 @@ Rails.application.routes.draw do
 
   namespace :api do 
     namespace :v1 do 
-      resources :users, only: [:show, :index, :create, :update]
+      resources :users, only: [:show, :index, :create, :update] do
+        resources :bookings, only: [:index]
+      end
       resources :roles, only: [:index]
       resources :addresses, only: [:index, :create, :update]
       resources :venues, only: [:index, :create, :update] do
         resources :sports, only: [:index]
+        resources :bookings, only: [:index]
       end
       resources :sports, only: [:index, :show, :create] do
         resources :venues, only: [:index]
       end
+      resources :bookings, only: [:index, :show, :update, :create]
     end
   end
 

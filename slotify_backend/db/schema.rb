@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_18_175339) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_20_204822) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_18_175339) do
     t.datetime "end_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", null: false
+    t.bigint "user_id", null: false
+    t.bigint "venue_id", null: false
+    t.bigint "sport_id", null: false
+    t.index ["sport_id"], name: "index_bookings_on_sport_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["venue_id"], name: "index_bookings_on_venue_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -92,6 +99,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_18_175339) do
     t.index ["owner_user_id"], name: "index_venues_on_owner_user_id"
   end
 
+  add_foreign_key "bookings", "sports"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "bookings", "venues"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "sports_venues", "sports"

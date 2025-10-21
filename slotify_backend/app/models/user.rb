@@ -6,4 +6,6 @@ class User < ApplicationRecord
     validates :phone_number, presence: true, uniqueness: true
     has_and_belongs_to_many :roles
     accepts_nested_attributes_for :roles
+
+    has_many :bookings
 end
