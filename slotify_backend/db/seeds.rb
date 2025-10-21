@@ -35,7 +35,7 @@ admin_users = [
     username: "ambeshraturi",
     first_name: "ambesh",
     last_name: "raturi",
-    email: "ambesh.raturi@gamil.com",
+    email: "ambesh.raturi@example.com",
     password: "password123",
     phone_number: "1234567890"
   },
@@ -43,7 +43,7 @@ admin_users = [
     username: "mayurpimpale",
     first_name: "mayur",
     last_name: "pimpale",
-    email: "bob.smith@gamil.com", 
+    email: "bob.smith@example.com", 
     password: "password123",
     phone_number: "0987654321"
   },
@@ -51,7 +51,7 @@ admin_users = [
     username: "varshilpatel",
     first_name: "varshil",
     last_name: "patel",
-    email: "varshil.patel@gamil.com", 
+    email: "varshil.patel@example.com", 
     password: "password123",
     phone_number: "1122334455"
   }
@@ -190,6 +190,26 @@ sports.each do |sport_attrs|
   puts "Created sport: #{sport.game}"
 end
 puts "Sports Created."
+
+puts "-"*50
+puts "Associating sports with venues..."
+venue_sport_mappings = {
+  "venue_1" => ["Football", "Tennis", "Badminton", "Basketball", "Cricket"],
+  "test_venue_2" => ["Basketball", "Cricket"],
+  "The Grand Hall" => ["Badminton", "Tennis", "Football", "Cricket"]
+}
+venue_sport_mappings.each do |venue_name, sport_names|
+  venue = Venue.find_by(name: venue_name)
+  sport_names.each do |sport_name|
+    sport = Sport.find_by(game: sport_name)
+    unless venue.sports.include?(sport)
+      venue.sports << sport
+      puts "Associated sport #{sport.game} with venue #{venue.name}"
+    end
+  end
+end
+
+
 
 puts "Seeding completed."
 

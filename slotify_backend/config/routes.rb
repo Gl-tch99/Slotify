@@ -10,7 +10,12 @@ Rails.application.routes.draw do
       resources :users, only: [:show, :index, :create, :update]
       resources :roles, only: [:index]
       resources :addresses, only: [:index, :create, :update]
-      resources :venues, only: [:index, :create, :update]
+      resources :venues, only: [:index, :create, :update] do
+        resources :sports, only: [:index]
+      end
+      resources :sports, only: [:index, :show, :create] do
+        resources :venues, only: [:index]
+      end
     end
   end
 

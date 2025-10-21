@@ -1,8 +1,12 @@
 class Api::V1::VenuesController < ApplicationController
     before_action :get_venue, only: [:update]
+    before_action :set_sport, only: [:index]
     def index
-        @venues = Venue.all
-
+        if @sport
+            @venues = @sport.venues
+        else
+            @venues = Venue.all
+        end
         render json: @venues.to_json(include: :address, except: :address_id), status: :ok
     end
 
@@ -30,6 +34,14 @@ class Api::V1::VenuesController < ApplicationController
     def venue_params
         params.require(:venue).permit(:name, :address_id, :owner_user_id, address_attributes: [:street_1, :street_2, :city, :state, :pincode])
     end
+
+    def set_sport
+        if params[:sport_id]
+            @sport = Sport.find_by(id: params[:sport_id])
+            render json: { error: "Sport not found. Please provide a valid sport_id" }, status: :not_found unless @sport
+        end
+    end
+
 
     def get_venue
         @venue = Venue.find(params[:id])
