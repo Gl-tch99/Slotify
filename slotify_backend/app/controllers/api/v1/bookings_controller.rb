@@ -19,7 +19,7 @@ class Api::V1::BookingsController < ApplicationController
   end
 
   def show
-    render json: @booking, status: :ok
+    render json: @booking.to_json(include: [:user, :venue, :sport]), status: :ok
   end
 
   def create

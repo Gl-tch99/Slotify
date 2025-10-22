@@ -6,7 +6,7 @@ class BookingService
   def create_booking
     ActiveRecord::Base.transaction do
       booking = Booking.create!(@booking_params)
-      return booking
+      booking
     end
   end
 end
