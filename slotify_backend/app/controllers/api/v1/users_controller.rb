@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
     def create
         user = UserService.new(user_params).create_user
         render json: user.to_json(include: { roles: { only: [:role] }}, except: :password_digest ), status: :created
-        rescue ActiveRecord::RecordInvalid => error
+    rescue ActiveRecord::RecordInvalid => error
             render json: {errors: error.message}, status: :unprocessable_entity
     end
 

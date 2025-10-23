@@ -13,7 +13,7 @@ class Api::V1::VenuesController < ApplicationController
     def create
         venue = VenueService.new(venue_params).create_venue
         render json: venue.to_json(include: :address, except: :address_id), status: :created
-        rescue => error
+    rescue => error
             render json: {errors: error.message}, status: :unprocessable_entity
     end
 
