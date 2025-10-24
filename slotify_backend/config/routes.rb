@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       resources :venues, only: [:index, :create, :update] do
         resources :sports, only: [:index]
         resources :bookings, only: [:index]
+        resources :venue_operating_times, only: [:index, :create]
       end
+      resources :venue_operating_times, only: [:show, :update]
       resources :sports, only: [:index, :show, :create] do
         resources :venues, only: [:index]
       end
