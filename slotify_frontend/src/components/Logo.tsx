@@ -8,7 +8,7 @@ const Logo = () => {
       <div className="flex top-5 justify-center items-center">
         <HomeIcon className="m-2" />
       </div>
-      {/* <img src={slot} className="h-10 w-10"></img> */}
+      <img src={slot} className="h-10 w-10"></img>
     </Link>
   );
 };

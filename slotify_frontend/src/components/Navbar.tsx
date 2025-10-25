@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import ToggleTheme from './ToggleTheme';
 import Logo from './Logo';
 import SetLocation from './SetLocation';
+import SearchBox from './SearchBox';
+import wave from '../assets/wave.svg';
 
 const Navbar = () => {
   return (
