@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+import Navbar from '../components/Navbar';
 
 const HomePage = () => {
   return (
@@ -6,7 +6,7 @@ const HomePage = () => {
       <Navbar />
       <h1 className="text-4xl font-bold">Home Page</h1>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
