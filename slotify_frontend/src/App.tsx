@@ -4,10 +4,11 @@ import BookVenuePage from './pages/BookVenuePage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-light-base dark:bg-dark-base">
       <Routes>
-        <Route path="/" index element={<HomePage/>} />
-        <Route path="/book_venue" element={<BookVenuePage/>} />
+        <Route path="/" index element={<HomePage />} />
+        <Route path="/book_venue" element={<BookVenuePage />} />
+        <Route path="*" element={<HomePage />} />
       </Routes>
     </div>
   );
