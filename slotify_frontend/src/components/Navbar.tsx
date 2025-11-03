@@ -21,6 +21,9 @@ const Navbar = () => {
             <ToggleTheme />
           </div>
           <div id="projects">
+            <Link to="/onboard_welcome">Onboard your business</Link>
+          </div>
+          <div id="projects">
             <Link to="/login">Login/Sign-up</Link>
           </div>
         </div>
