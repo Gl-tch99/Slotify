@@ -4,6 +4,7 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
       <Navbar />
+
       <div className="text-2xl w-11/12 flex flex-col gap-2 text-black dark:text-amber-50 ">
         <div className="h-3/4 text-black dark:text-amber-50 flex "></div>
         <div className="h-3/4 text-black dark:text-amber-50">

@@ -12,7 +12,9 @@ body,
   --color-dark-ui: #7a1cac;
   --color-dark-accent: #0b192c;
   --color-dark-base: #0f0f0f;
+  --color-dark-text: #fff7e6;
   --color-light-base: #eeeeee;
   --color-light-accent: #f5f5f0;
   --color-light-ui: #00b562;
+  --color-light-text: #000000;
 }
