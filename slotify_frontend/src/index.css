@@ -17,4 +17,32 @@ body,
   --color-light-accent: #f5f5f0;
   --color-light-ui: #00b562;
   --color-light-text: #000000;
+  --color-dark-text: #fff7e6;
+  --color-light-text: #000000;
+}
+
+@layer components {
+  .input-field {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+  .form-button {
+    @apply text-black dark:text-amber-50 border-2 border-light-ui hover:bg-light-ui focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-transparent dark:border-2 dark:border-dark-ui dark:hover:bg-dark-ui focus:outline-none dark:focus:ring-blue-800;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
 }
