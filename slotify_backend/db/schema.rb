@@ -61,7 +61,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_07_072629) do
   create_table "sports_venues", id: false, force: :cascade do |t|
     t.bigint "sport_id", null: false
     t.bigint "venue_id", null: false
-    t.index ["sport_id", "venue_id"], name: "index_sports_venues_on_sport_id_and_venue_id", unique: true
     t.index ["sport_id"], name: "index_sports_venues_on_sport_id"
     t.index ["venue_id"], name: "index_sports_venues_on_venue_id"
   end
