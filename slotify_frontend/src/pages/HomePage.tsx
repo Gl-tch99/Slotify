@@ -6,37 +6,6 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
       <Navbar />
-<<<<<<< HEAD
-
-      <div className="text-2xl w-11/12 flex flex-col gap-2 text-black dark:text-amber-50 ">
-        <div className="h-3/4 text-black dark:text-amber-50 flex "></div>
-        <div className="h-3/4 text-black dark:text-amber-50">
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-          pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
-          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-          Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class
-          aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem
-          ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-          pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
-          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-          Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class
-          aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem
-          ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-          pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
-          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-          Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class
-          aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem
-          ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-          pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
-          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-          Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class
-          aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem
-          ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-          pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
-          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-          Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class
-          aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-=======
       <div className="text-2xl w-11/12 flex flex-col gap-5 text-black dark:text-amber-50 ">
         <div className="flex flex-1 flex-col md:flex-row h-1/3 gap-5">
           <div className="flex-1/2 justify-center items-center flex p-5">
@@ -54,7 +23,6 @@ const HomePage = () => {
           <div className="flex-1/2">
             <img className="rounded-2xl" src={HomepageImage} alt="" />
           </div>
->>>>>>> 3112353 (homepage_added)
         </div>
         <div className="h-1/3 max-h-1/3 flex-2 border-2 rounded-3xl flex flex-col overflow-y-scroll scrollbar-hide md:justify-evenly md:items-center gap-5 p-5">
           <div className="flex flex-row w-full place-content-between p-2">
