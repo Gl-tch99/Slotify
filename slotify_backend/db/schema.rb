@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_20_204822) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_07_072629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,7 +61,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_20_204822) do
   create_table "sports_venues", id: false, force: :cascade do |t|
     t.bigint "sport_id", null: false
     t.bigint "venue_id", null: false
-    t.index ["sport_id", "venue_id"], name: "index_sports_venues_on_sport_id_and_venue_id", unique: true
     t.index ["sport_id"], name: "index_sports_venues_on_sport_id"
     t.index ["venue_id"], name: "index_sports_venues_on_venue_id"
   end
@@ -75,7 +74,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_20_204822) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jti"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

@@ -3,7 +3,9 @@ class AuthController < ApplicationController
     def login
         puts "Login request received"
         user= User.find_by(email: params[:email])
+        puts user
         if user&.authenticate(params[:password])
+            user.update_jti
             token = create_token(user)
             render json: { 
                 token: token, 
@@ -18,12 +20,18 @@ class AuthController < ApplicationController
         end
     end
 
+    def logout
+      @current_user.update_jti
+      render json: { message: "Logged out successfully" }
+    end
+
     private
     def create_token(user)
         payload = {
           user_id: user.id,
           email: user.email,
-          roles: user.roles.pluck(:role)
+          roles: user.roles.pluck(:role),
+          jti: user.jti
         }
         JwtService.encode(payload)
       end

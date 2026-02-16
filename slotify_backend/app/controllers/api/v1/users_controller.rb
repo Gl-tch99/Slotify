@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
     before_action :set_user, only: [:update, :show]
-
+    skip_before_action :authenticate_request, only: [:create]
     def index
         @users = User.all
         render json: @users, status: :ok
@@ -33,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username, :first_name, :last_name, :email, :phone_number, :password, :role)
+        params.require(:user).permit(:username, :first_name, :last_name, :email, :phone_number, :password)
     end
 
     def set_user

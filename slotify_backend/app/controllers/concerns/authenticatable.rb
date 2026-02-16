@@ -32,8 +32,8 @@ module Authenticatable
           decoded = JwtService.decode(token)
           return nil unless decoded
           
-          user = User.find_by(id: decoded[:user_id])
-          user
+          user = User.find_by(id: decoded[:user_id])          
+          user if user && user.jti == decoded[:jti]
         rescue => e
           nil
         end
