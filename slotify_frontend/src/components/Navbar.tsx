@@ -13,7 +13,7 @@ const Navbar = () => {
             <SetLocation />
           </div>
         </div>
-        <div className="flex-1/2 flex justify-end gap-5 text-light-ui dark:text-dark-ui">
+        <div className="flex-1/2 md:flex justify-end gap-5 text-light-ui dark:text-dark-ui hidden">
           <div id="projects">
             <Link to="/book_venue">Book Venue</Link>
           </div>
