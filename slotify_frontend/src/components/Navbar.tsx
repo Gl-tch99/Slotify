@@ -2,8 +2,21 @@ import { Link } from 'react-router-dom';
 import ToggleTheme from './ToggleTheme';
 import Logo from './Logo';
 import SetLocation from './SetLocation';
+import { useAtom } from 'jotai';
+import { isLoggedInAtom } from '../atoms/isLoggedIn';
+import { useNavigate } from 'react-router-dom';
+
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useAtom(isLoggedInAtom);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    setIsLoggedIn(false);
+    navigate('/');
+  }
+  
+  console.log(isLoggedIn)
   return (
     <>
       <nav className="sticky flex h-max w-screen items-center top-0 left-0 right-0 bg-light-accent dark:bg-dark-accent text-black dark:text-amber-50 bg-opacity-20 py-3 px-7 bottom-8 gap-7 backdrop-blur-lg">
@@ -23,9 +36,9 @@ const Navbar = () => {
           <div id="projects">
             <Link to="/onboard_welcome">Onboard your business</Link>
           </div>
-          <div id="projects">
+          { (!isLoggedIn) ? <div id="projects">
             <Link to="/login">Login/Sign-up</Link>
-          </div>
+          </div> : <div id="projects"> <button onClick={handleLogout}>Logout</button></div>}           
         </div>
       </nav>
     </>

@@ -4,6 +4,8 @@ import DarkLoginImage from '../assets/dark_login_image.png';
 import { useState } from 'react';
 import { apiRequest, API_ENDPOINTS } from '../util/api';
 import { useNavigate } from 'react-router-dom';
+import { useSetAtom } from 'jotai';
+import { isLoggedInAtom } from '../atoms/isLoggedIn';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const setIsLoggedIn = useSetAtom(isLoggedInAtom)
 
 
 
@@ -36,6 +39,7 @@ const LoginPage = () => {
       setError("");
       const response = await apiRequest(API_ENDPOINTS.login, 'post', formData);
       setSuccess(true);
+      setIsLoggedIn(true);
 
       // Store token if returned
       if (response.token) {
